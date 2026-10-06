@@ -1,0 +1,24 @@
+Crie uma função Typescript que receba uma data no formato AAAA-MM-DD e retorne na seguinte forma: 31 de jan. de 2027.
+
+Obs.: o Claude IA não retornou exatamente esse código abaixo. O que ele retornou salvei na pasta de material de apoio dessa aula. Esse que utilizei aqui fiz ela gerar a apartir do print do código gerado pelo PApito também via Claude IA
+
+function formatDate(dateStr: string): string {
+  const months = [
+    'jan.', 'fev.', 'mar.', 'abr.', 'mai.', 'jun.',
+    'jul.', 'ago.', 'set.', 'out.', 'nov.', 'dez.'
+  ];
+
+  const [year, month, day] = dateStr.split('-').map(Number);
+
+  if (!year || !month || !day) {
+    throw new Error(`Invalid date format: "${dateStr}". Expected YYYY-MM-DD.`);
+  }
+
+  const monthName = months[month - 1];
+
+  return `${day} de ${monthName} de ${year}`;
+}
+
+// Usage example
+console.log(formatDate('2027-01-17')); // "17 de jan. de 2027"
+console.log(formatDate('2025-12-05')); // "5 de dez. de 2025"
